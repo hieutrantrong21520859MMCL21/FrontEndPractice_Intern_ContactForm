@@ -1,0 +1,246 @@
+:root {
+    --color_light_green: hsl(148, 38%, 91%);
+    --color_medium_green: hsl(169, 82%, 27%);
+    --color_red: hsl(0, 66%, 54%);
+    --color_white: hsl(0, 0%, 100%);
+    --color_medium_gray: hsl(186, 15%, 59%);
+    --color_dark_gray: hsl(187, 24%, 22%);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Karla', sans-serif;
+    background-color: var(--color_light_green);
+}
+
+dialog {
+    border: none;
+    padding: 0;
+}
+
+dialog div {
+    width: 300px;
+    margin: 0 auto;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px 10px;
+
+    background-color: var(--color_dark_gray);
+}
+
+dialog div > * {
+    margin: 0;
+}
+
+dialog div p.notification {
+    color: var(--color_white);
+    font-weight: 700;
+}
+
+dialog div p.message {
+    color: var(--color_white);
+    font-weight: 400;
+}
+
+.container {
+    height: 100%;
+    padding: 20px;
+
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: var(--color_white);
+}
+
+.container header {
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--color_medium_green);
+}
+
+.container form {
+    margin-top: 30px;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
+
+.container form div > * {
+    margin: 0;
+}
+
+.container form div p.user-info span {
+    color: var(--color_medium_green);
+}
+
+.container form div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
+
+.container form div.first-name-box input,
+.container form div.last-name-box input,
+.container form div.email-box input,
+.container form div.query-type-box label,
+.container form div.message-box #message {
+    outline: none;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.container form div.query-type-box label,
+.container form div.confirmation-box label {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+}
+
+.container form div.query-type-box input,
+.container form div.confirmation-box input {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}
+
+.container form div.message-box #message {
+    resize: none;
+}
+
+.container form div.confirmation-box label p span {
+    color: var(--color_medium_green);
+}
+
+.container form div p.error {
+    color: var(--color_red);
+    font-weight: 400;
+}
+
+.container form div.first-name-box input:is(:hover, :focus),
+.container form div.last-name-box input:is(:hover, :focus),
+.container form div.email-box input:is(:hover, :focus),
+.container form div.message-box #message:is(:hover, :focus) {
+    border-width: 2px;
+    border-color: var(--color_medium_green);
+}
+
+.container form  div.query-type-box label {
+    position: relative;
+}
+
+.container form div.query-type-box label input:checked {
+    visibility: hidden;
+}
+
+.container form div.query-type-box label input:checked + div::after {
+    content: url(./assets/images/icon-radio-selected.svg);
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px; 
+}
+
+.container form div.confirmation-box label {
+    cursor: pointer;
+    position: relative;
+}
+
+.container form div.confirmation-box label input:checked {
+    visibility: hidden;
+}
+
+.container form div.confirmation-box label input:checked + p::after {
+    content: url(./assets/images/icon-checkbox-check.svg);
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+}
+
+.container form #submit {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
+    color: var(--color_white);
+    background-color: var(--color_medium_green);
+
+    cursor: pointer;
+}
+
+.container form #submit:hover {
+    background-color: var(--color_dark_gray);
+}
+
+.hidden {
+    display: none;
+}
+
+.invalid {
+    border-color: var(--color_red);
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    .success-dialog {
+        /* width: 4px; */
+        text-align: start;
+        width: 440px;
+    }
+    
+    .container {
+        width: 768px;
+        margin: 0 auto;
+    }
+
+    .container header {
+        font-size: 30px;
+    }
+    
+    .container form {
+        flex-flow: row wrap;
+        column-gap: 20px;
+    }
+
+    .container form div.first-name-box, .container form div.last-name-box {
+        flex: 1;
+    }
+
+    .container form div.email-box,
+    .container form div.query-type-box,
+    .container form div.message-box,
+    .container form div.confirmation-box,
+    .container form #submit {
+        width: 100%;
+    }
+}
